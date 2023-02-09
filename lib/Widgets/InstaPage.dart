@@ -84,14 +84,13 @@ class _MyInstaPageState extends State<MyInstaPage> {
         controller.goForward();
         break;
         case 2:
-         Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (contextkkk) => const MyMainPage()));
+          Navigator.of(context)
+         .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
         break;
       default:
     }
   }
+
 
   
 
@@ -99,7 +98,7 @@ class _MyInstaPageState extends State<MyInstaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // The search area here
+          backgroundColor: Colors.black,
           title: Container(
         height: 40,
         decoration: BoxDecoration(
@@ -131,7 +130,56 @@ class _MyInstaPageState extends State<MyInstaPage> {
                 border: InputBorder.none),
           ),
         ),
-      )),
+      ),
+      actions: [
+            PopupMenuButton(
+                icon: const Icon(
+                  Icons.more_vert,
+                  color: Colors.white,
+                ),
+                color: Colors.black,
+                shadowColor: Colors.grey,
+                onSelected: (value) {
+                  // your logic
+                  setState(() {
+                    // selectedItem = value.toString();
+                  });
+                  Navigator.pushNamed(context, value.toString());
+                },
+                itemBuilder: (BuildContext bc) {
+                  return const [
+                    PopupMenuItem(
+                      value: '/hello',
+                      child: Text(
+                        "New Tab",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: '/about',
+                      child: Text(
+                        "Bookmarks",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: '/contact',
+                      child: Text(
+                        "Contact Us",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: '/contact',
+                      child: Text(
+                        "Settings",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ];
+                })
+          ],
+      ),
       body:  WebViewStack(controller: controller), 
      bottomNavigationBar: BottomNavigationBar(
           backgroundColor: const Color.fromARGB(255, 34, 32, 32),

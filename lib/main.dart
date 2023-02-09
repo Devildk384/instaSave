@@ -20,7 +20,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
-      routes: {"/": (context) => const MyMainPage()},
+      routes: {
+        "/": (context) => const MyMainPage(),
+        "/google": (context) => const MyHomePage(),
+        "/instagram": (context) => const MyInstaPage(),
+      },
+
     );
   }
 }
@@ -49,8 +54,6 @@ class _MyMainPageState extends State<MyMainPage> {
     // TODO: implement initState
     super.initState();
     isLoaded = false;
-    print("kjkjjk");
-
   }
 
   void verifyText(value) {
@@ -77,6 +80,33 @@ class _MyMainPageState extends State<MyMainPage> {
           Uri.parse('https://google.com/search?q=${value}'),
         );
        
+    }
+  }
+
+  void clearText() {
+    fieldText.clear();
+    setState(() {
+      
+    });
+  }
+
+
+  void _onTabBottonNavItem(value) {
+     setState(() {
+      _selectedIndex = value;
+    });
+    switch (value) {
+      case 0:
+        controller.goBack();
+        break;
+        case 1:
+        controller.goForward();
+        break;
+        case 2:
+         Navigator.of(context)
+         .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+        break;
+      default:
     }
   }
 
@@ -109,7 +139,7 @@ class _MyMainPageState extends State<MyMainPage> {
                         const Image(image: AssetImage('images/google.png')),
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.clear),
-                      onPressed: () {},
+                      onPressed: clearText,
                     ),
                     // : const EdgeInsets.fromLTRB(2,0,0,0),
                     hintStyle: const TextStyle(color: Colors.white),
@@ -127,8 +157,6 @@ class _MyMainPageState extends State<MyMainPage> {
                 color: Colors.black,
                 shadowColor: Colors.grey,
                 onSelected: (value) {
-                  print(value);
-
                   // your logic
                   setState(() {
                     selectedItem = value.toString();
@@ -182,10 +210,8 @@ class _MyMainPageState extends State<MyMainPage> {
                     // padding: EdgeInsets.all(20.0),
                     // hoverColor: Colors.teal,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (contextkkk) => MyHomePage()));
+                               Navigator.of(context)
+                              .pushNamedAndRemoveUntil('/google', (Route<dynamic> route) => false);
                     },
                     // color: Colors.teal,
                     child: const Text(
@@ -201,10 +227,8 @@ class _MyMainPageState extends State<MyMainPage> {
                     // padding: EdgeInsets.all(20.0),
                     // hoverColor: Colors.teal,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MyInstaPage()));
+                         Navigator.of(context)
+                              .pushNamedAndRemoveUntil('/instagram', (Route<dynamic> route) => false);
                     },
                     // color: Colors.teal,
                     child: const Text(
@@ -228,22 +252,23 @@ class _MyMainPageState extends State<MyMainPage> {
             BottomNavigationBarItem(
               icon: Icon(Icons.arrow_forward),
               label: 'forward',
-              backgroundColor: Colors.green,
+              // backgroundColor: Colors.green,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.home_filled),
               label: 'Home',
-              backgroundColor: Colors.pink,
+              // backgroundColor: Colors.pink,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.tab_unselected),
-              label: 'Home',
-              backgroundColor: Colors.pink,
+              label: 'Tab',
+              // backgroundColor: Colors.pink,
             ),
           ],
           currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-        ),
+          onTap: (value) => {
+          _onTabBottonNavItem(value)
+          }),
       ),
     );
   }
