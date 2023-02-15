@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
         "/google": (context) => const MyHomePage(),
         "/instagram": (context) => const MyInstaPage(),
       },
-
     );
   }
 }
@@ -38,7 +37,7 @@ class MyMainPage extends StatefulWidget {
 }
 
 class _MyMainPageState extends State<MyMainPage> {
-   final fieldText = TextEditingController();
+  final fieldText = TextEditingController();
   late final WebViewController controller;
   int _selectedIndex = 0;
   var selectedItem = '';
@@ -49,6 +48,7 @@ class _MyMainPageState extends State<MyMainPage> {
       _selectedIndex = index;
     });
   }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -57,7 +57,6 @@ class _MyMainPageState extends State<MyMainPage> {
   }
 
   void verifyText(value) {
-      
     if (value == "") {
       setState(() {
         // ontabHideGoogleIcon = false;
@@ -79,32 +78,28 @@ class _MyMainPageState extends State<MyMainPage> {
         ..loadRequest(
           Uri.parse('https://google.com/search?q=${value}'),
         );
-       
     }
   }
 
   void clearText() {
     fieldText.clear();
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
-
   void _onTabBottonNavItem(value) {
-     setState(() {
+    setState(() {
       _selectedIndex = value;
     });
     switch (value) {
       case 0:
         controller.goBack();
         break;
-        case 1:
+      case 1:
         controller.goForward();
         break;
-        case 2:
-         Navigator.of(context)
-         .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+      case 2:
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
         break;
       default:
     }
@@ -197,78 +192,164 @@ class _MyMainPageState extends State<MyMainPage> {
                 })
           ],
         ),
-        body: isLoaded ?  WebViewStack(controller: controller,) : Container(
-          color: const Color.fromARGB(255, 30, 30, 30),
-          // snackBar: SnackBar(content: Text('Double Back to leave')),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
-                  child: TextButton(
-                    // padding: EdgeInsets.all(20.0),
-                    // hoverColor: Colors.teal,
-                    onPressed: () {
-                               Navigator.of(context)
-                              .pushNamedAndRemoveUntil('/google', (Route<dynamic> route) => false);
-                    },
-                    // color: Colors.teal,
-                    child: const Text(
-                      'Google',
-                      style: TextStyle(fontSize: 20.0, color: Colors.white),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-                  child: TextButton(
-                    // padding: EdgeInsets.all(20.0),
-                    // hoverColor: Colors.teal,
-                    onPressed: () {
-                         Navigator.of(context)
-                              .pushNamedAndRemoveUntil('/instagram', (Route<dynamic> route) => false);
-                    },
-                    // color: Colors.teal,
-                    child: const Text(
-                      'Instagram',
-                      style: TextStyle(fontSize: 20.0, color: Colors.white),
-                    ),
-                  ),
-                ),
-              ]),
-        ),
+        body: isLoaded
+            ? WebViewStack(
+                controller: controller,
+              )
+            : Container(
+                color: const Color.fromARGB(255, 30, 30, 30),
+                // snackBar: SnackBar(content: Text('Double Back to leave')),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
+                        child: TextButton(
+                          // padding: EdgeInsets.all(20.0),
+                          // hoverColor: Colors.teal,
+                          onPressed: () {
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                '/google', (Route<dynamic> route) => false);
+                          },
+                          // color: Colors.teal,
+                           child: Column(
+                            children: <Widget> [
+                              Container(
+                                decoration: BoxDecoration(
+                               color: const Color.fromRGBO(59, 59, 152, 0.1),
+
+                                  borderRadius: BorderRadius.circular(12),
+                                  image: const DecorationImage(
+                                    image: AssetImage('images/fb.png'),
+                                  ),
+                                ),
+                                width: 60,
+                                height: 60,
+                              ),
+                              const Padding(
+                                 padding: EdgeInsets.all(10),
+                                 child: Text(
+                                  "Facebook",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                  ),
+                                )
+                              )
+                               
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
+                        child: TextButton(
+                          // padding: EdgeInsets.all(20.0),
+                          // hoverColor: Colors.teal,
+                          onPressed: () {
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                '/google', (Route<dynamic> route) => false);
+                          },
+                          // color: Colors.teal,
+                           child: Column(
+                            children: <Widget> [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: const DecorationImage(
+                                    image: AssetImage('images/googleicon.png'),
+                                  ),
+                                ),
+                                width: 70,
+                                height: 70,
+                              ),
+                              const Padding(
+                                 padding: EdgeInsets.all(10),
+                                 child: Text(
+                                  "Google",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                )
+                              )
+                               
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 20.0, left: 10.0, right: 10.0),
+                        child: TextButton(
+                          // padding: EdgeInsets.all(20.0),
+                          // hoverColor: Colors.teal,
+                          onPressed: () {
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                '/instagram', (Route<dynamic> route) => false);
+                          },
+                          // color: Colors.teal,
+                          child: Column(
+                            children: <Widget> [
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: const DecorationImage(
+                                    image: AssetImage('images/insta.png'),
+                                  ),
+                                ),
+                                width: 70,
+                                height: 70,
+                              ),
+                              const Padding(
+                                 padding: EdgeInsets.all(10),
+                                 child: Text(
+                                  "Instagram",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                )
+                              )
+                               
+                            ],
+                          ),
+                        ),
+                      ),
+                    ]),
+              ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: const Color.fromARGB(255, 34, 32, 32),
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.arrow_back),
-              label: "back",
-              backgroundColor: Color.fromARGB(255, 34, 32, 32),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.arrow_forward),
-              label: 'forward',
-              // backgroundColor: Colors.green,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled),
-              label: 'Home',
-              // backgroundColor: Colors.pink,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.tab_unselected),
-              label: 'Tab',
-              // backgroundColor: Colors.pink,
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: (value) => {
-          _onTabBottonNavItem(value)
-          }),
+            backgroundColor: const Color.fromARGB(255, 34, 32, 32),
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.grey,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.arrow_back),
+                label: "back",
+                backgroundColor: Color.fromARGB(255, 34, 32, 32),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.arrow_forward),
+                label: 'forward',
+                // backgroundColor: Colors.green,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_filled),
+                label: 'Home',
+                // backgroundColor: Colors.pink,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.tab_unselected),
+                label: 'Tab',
+                // backgroundColor: Colors.pink,
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: (value) => {_onTabBottonNavItem(value)}),
       ),
     );
   }

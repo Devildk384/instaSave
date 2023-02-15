@@ -66,6 +66,11 @@ flutter:
   assets:
     - images/google.png
     - images/google1.png
+    - images/insta.png
+    - images/googleicon.png
+    - images/fb.png
+
+
 
   #   - images/a_dot_ham.jpeg
 
