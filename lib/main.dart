@@ -199,151 +199,217 @@ class _MyMainPageState extends State<MyMainPage> {
             : Container(
                 color: const Color.fromARGB(255, 30, 30, 30),
                 // snackBar: SnackBar(content: Text('Double Back to leave')),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
-                        child: TextButton(
-                          // padding: EdgeInsets.all(20.0),
-                          // hoverColor: Colors.teal,
-                          onPressed: () {
-                            Navigator.of(context).pushNamedAndRemoveUntil(
-                                '/google', (Route<dynamic> route) => false);
-                          },
-                          // color: Colors.teal,
-                           child: Column(
-                            children: <Widget> [
-                              Container(
-                                decoration: BoxDecoration(
-                               color: const Color.fromRGBO(59, 59, 152, 0.1),
-
-                                  borderRadius: BorderRadius.circular(12),
-                                  image: const DecorationImage(
-                                    image: AssetImage('images/fb.png'),
-                                  ),
-                                ),
-                                width: 60,
-                                height: 60,
-                              ),
-                              const Padding(
-                                 padding: EdgeInsets.all(10),
-                                 child: Text(
-                                  "Facebook",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                  ),
-                                )
-                              )
+                child: Column(
+                  children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: 20.0, left: 2.0, right: 2.0),
+                            child: TextButton(
+                              // padding: EdgeInsets.all(20.0),
+                              // hoverColor: Colors.teal,
+                              onPressed: () {
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    '/google', (Route<dynamic> route) => false);
+                              },
+                              // color: Colors.teal,
+                               child: SizedBox(
+                                height: 100,
+                                 child: Column(
+                                  children: <Widget> [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                     color: const Color.fromRGBO(59, 59, 152, 0.1),
                                
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
-                        child: TextButton(
-                          // padding: EdgeInsets.all(20.0),
-                          // hoverColor: Colors.teal,
-                          onPressed: () {
-                            Navigator.of(context).pushNamedAndRemoveUntil(
-                                '/google', (Route<dynamic> route) => false);
-                          },
-                          // color: Colors.teal,
-                           child: Column(
-                            children: <Widget> [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: const DecorationImage(
-                                    image: AssetImage('images/googleicon.png'),
+                                        borderRadius: BorderRadius.circular(12),
+                                        image: const DecorationImage(
+                                          image: AssetImage('images/fb.png'),
+                                        ),
+                                      ),
+                                      width: 60,
+                                      height: 60,
+                                    ),
+                                    const Padding(
+                                       padding: EdgeInsets.all(10),
+                                       child: Text(
+                                        "Facebook",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                        ),
+                                      )
+                                    )
+                                     
+                                  ],
                                   ),
+                               ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(top: 20.0, left: 2.0, right: 2.0),
+                            child: TextButton(
+                              // padding: EdgeInsets.all(20.0),
+                              // hoverColor: Colors.teal,
+                              onPressed: () {
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    '/google', (Route<dynamic> route) => false);
+                              },
+                              // color: Colors.teal,
+                               child: SizedBox(
+                                height: 100,
+                                 child: Column(
+                                  children: <Widget> [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(15),
+                                        image: const DecorationImage(
+                                          image: AssetImage('images/googleicon.png'),
+                                        ),
+                                      ),
+                                      width: 60,
+                                      height: 60,
+                                    ),
+                                    const Padding(
+                                       padding: EdgeInsets.all(10),
+                                       child: Text(
+                                        "Google",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                        ),
+                                      )
+                                    )
+                                     
+                                  ],
+                                                         ),
+                               ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 20.0, left: 2.0, right: 2.0),
+                            child: TextButton(
+                              // padding: EdgeInsets.all(20.0),
+                              // hoverColor: Colors.teal,
+                              onPressed: () {
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    '/instagram', (Route<dynamic> route) => false);
+                              },
+                              // color: Colors.teal,
+                              child: SizedBox(
+                                height: 100,
+                                child: Column(
+                                  children: <Widget> [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        image: const DecorationImage(
+                                          image: AssetImage('images/insta.png'),
+                                        ),
+                                      ),
+                                      width: 60,
+                                      height: 60,
+                                    ),
+                                    const Padding(
+                                       padding: EdgeInsets.all(10),
+                                       child: Text(
+                                        "Instagram",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                        ),
+                                      )
+                                    )
+                                     
+                                  ],
                                 ),
-                                width: 70,
-                                height: 70,
                               ),
-                              const Padding(
-                                 padding: EdgeInsets.all(10),
-                                 child: Text(
-                                  "Google",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                  ),
-                                )
-                              )
-                               
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20.0, left: 10.0, right: 10.0),
-                        child: TextButton(
-                          // padding: EdgeInsets.all(20.0),
-                          // hoverColor: Colors.teal,
-                          onPressed: () {
-                            Navigator.of(context).pushNamedAndRemoveUntil(
-                                '/instagram', (Route<dynamic> route) => false);
-                          },
-                          // color: Colors.teal,
-                          child: Column(
-                            children: <Widget> [
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: const DecorationImage(
-                                    image: AssetImage('images/insta.png'),
-                                  ),
-                                ),
-                                width: 70,
-                                height: 70,
-                              ),
-                              const Padding(
-                                 padding: EdgeInsets.all(10),
-                                 child: Text(
-                                  "Instagram",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                  ),
-                                )
-                              )
+                              Padding(
+                            padding:
+                                const EdgeInsets.only(top: 20.0, left: 2.0, right: 2.0),
+                            child: TextButton(
+                              // padding: EdgeInsets.all(20.0),
+                              // hoverColor: Colors.teal,
+                              onPressed: () {
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    '/google', (Route<dynamic> route) => false);
+                              },
+                              // color: Colors.teal,
+                               child: SizedBox(
+                                height: 100,
+                                 child: Column(
+                                  children: <Widget> [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                     color: const Color.fromRGBO(59, 59, 152, 0.1),
                                
-                            ],
+                                        borderRadius: BorderRadius.circular(12),
+                                        image: const DecorationImage(
+                                          image: AssetImage('images/fb.png'),
+                                        ),
+                                      ),
+                                      width: 60,
+                                      height: 60,
+                                    ),
+                                    const Padding(
+                                       padding: EdgeInsets.all(10),
+                                       child: Text(
+                                        "Facebook",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                        ),
+                                      )
+                                    )
+                                     
+                                  ],
+                                                         ),
+                               ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ]),
+                        ]),
+                  ],
+                ),
               ),
         bottomNavigationBar: BottomNavigationBar(
             backgroundColor: const Color.fromARGB(255, 34, 32, 32),
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.grey,
+            selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
+            unselectedItemColor:const Color.fromARGB(255, 255, 255, 255),
+
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.arrow_back),
+                                backgroundColor: Color.fromARGB(255, 34, 32, 32),
+
                 label: "back",
-                backgroundColor: Color.fromARGB(255, 34, 32, 32),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.arrow_forward),
+                                backgroundColor: Color.fromARGB(255, 34, 32, 32),
+
                 label: 'forward',
                 // backgroundColor: Colors.green,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_filled),
+                                backgroundColor: Color.fromARGB(255, 34, 32, 32),
+
                 label: 'Home',
                 // backgroundColor: Colors.pink,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.tab_unselected),
+                                backgroundColor: Color.fromARGB(255, 34, 32, 32),
+
                 label: 'Tab',
                 // backgroundColor: Colors.pink,
               ),
